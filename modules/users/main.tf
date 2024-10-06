@@ -10,19 +10,19 @@ resource "aws_iam_user" "users" {
   }
 }
 
-# resource "aws_iam_user_login_profile" "user_login" {
-#   for_each = toset(var.user_names)
+resource "aws_iam_user_login_profile" "user_login" {
+  for_each = toset(var.user_names)
 
-#   user                    = each.value
-#   password_reset_required = true
-#   password_length         = 16
+  user                    = each.value
+  password_reset_required = true
+  password_length         = 16
 
-#   lifecycle {
-#     prevent_destroy = true
-#   }
+  # lifecycle {
+  #   prevent_destroy = true
+  # }
 
-#   depends_on = [aws_iam_user.users]
-# }
+  depends_on = [aws_iam_user.users]
+}
 
 resource "aws_iam_access_key" "user_access_key" {
   for_each = toset(var.user_names)

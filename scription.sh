@@ -1,45 +1,45 @@
-# #!/bin/bash -ex
+#!/bin/bash -ex
 
-#  {
+ {
 
-#  # Update the system
+ # Update the system
 
-#  sudo dnf -y update
-
-
-
-#  # Install MySQL Community Server
-
-#  sudo dnf -y install https://dev.mysql.com/get/mysql80-community-release-el9-1.noarch.rpm
-
-#  sudo dnf -y install mysql-community-server
+ sudo dnf -y update
 
 
 
-#  # Start and enable MySQL
+ # Install MySQL Community Server
 
-#  sudo systemctl start mysqld
+ sudo dnf -y install https://dev.mysql.com/get/mysql80-community-release-el9-1.noarch.rpm
 
-#  sudo systemctl enable mysqld
+ sudo dnf -y install mysql-community-server
 
 
 
-#  # Install Apache and PHP
+ # Start and enable MySQL
 
-#  sudo dnf -y install httpd php
+ sudo systemctl start mysqld
 
-#  # Start and enable Apache
+ sudo systemctl enable mysqld
 
-#  sudo systemctl start httpd
 
-#  sudo systemctl enable httpd
 
-#  cd /var/www/html
+ # Install Apache and PHP
 
-#  sudo wget https://aws-tc-largeobjects.s3-us-west-2.amazonaws.com/CUR-TF-200-ACACAD/studentdownload/lab-app.tgz
+ sudo dnf -y install httpd php
 
-#  sudo tar xvfz lab-app.tgz
+ # Start and enable Apache
 
-#  sudo chown apache:root /var/www/html/rds.conf.php
+ sudo systemctl start httpd
 
-#  } &> /var/log/user_data.log
+ sudo systemctl enable httpd
+
+ cd /var/www/html
+
+ sudo wget https://aws-tc-largeobjects.s3-us-west-2.amazonaws.com/CUR-TF-200-ACACAD/studentdownload/lab-app.tgz
+
+ sudo tar xvfz lab-app.tgz
+
+ sudo chown apache:root /var/www/html/rds.conf.php
+
+ } &> /var/log/user_data.log
