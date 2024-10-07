@@ -8,7 +8,6 @@ resource "aws_lb" "app_lb" {
   depends_on         = [aws_internet_gateway.igw_vpc]
 }
 
-
 # Target Group for EC2 Instances
 resource "aws_lb_target_group" "alb_ec2_tg" {
   name     = "web-server-tg"
@@ -49,7 +48,8 @@ resource "aws_launch_template" "ec2_launch_template" {
   }
 
   user_data = base64encode(<<-EOF
-              #!/bin/bash
+              #!/bin/bash -ex
+              
               sudo yum update -y
               sudo yum install -y httpd
               sudo systemctl start httpd.service

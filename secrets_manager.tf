@@ -1,6 +1,6 @@
 # Create a Secrets Manager secret for storing user credentials
 resource "aws_secretsmanager_secret" "users" {
-  name = "user-secrets"
+  name = "new-unique-secret-name00"
 }
 
 # Create a dynamic secret string that includes usernames and passwords
